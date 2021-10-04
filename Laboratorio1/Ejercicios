@@ -1,0 +1,104 @@
+# David Peña Ugarte
+# 20130875
+
+# Ejercicio 1:
+# Leer n números en un array y retornar la suma de los mismos
+lista = []
+sum_lista = 0
+lista = (input("Ingrese n numeros\n").split())
+for i in range(len(lista)):
+    sum_lista += int(lista[i])
+print("Suma de elementos", sum_lista)
+print("")
+
+# Ejercicio 2:
+# Leer n números en un array y mostrarlos en orden inverso
+listaInv = []
+tam = len(lista)
+for i in enumerate(lista):
+    listaInv.append(lista[tam - 1])
+    tam -= 1
+print("Lista invertida", listaInv)
+print("")
+
+# Ejercicio 3
+# Leer n números y separarlos según si son pares e impares.
+listaPar = []
+listaImpar = []
+for numero in lista:
+    if (int(numero) % 2 == 0):
+        listaPar.append(numero)
+    else:
+        listaImpar.append(numero)
+print("Lista par", listaPar)
+print("Lista impar", listaImpar)
+print("")
+
+# Ejercicio 4
+# Leer 3 números y mostrarlos en orden ascendente
+
+lista2 = []
+lista2 = input("Ingrese 3 numeros\n").split()
+menor = int(lista2[0])
+listaOrdenada = []
+for i in range(0, 2):
+    for j in lista2:
+        if int(menor) > int(j):
+            menor = j
+        print("j", j)  
+    lista2.remove(menor)
+    print("menor", menor)
+    listaOrdenada.append(menor)  
+    menor = lista2[0]
+     
+listaOrdenada.append(lista2[0])    
+print(listaOrdenada)
+print("")
+
+
+# Ejercicio 5
+# Colocar un marco a un texto. Ingresar una serie de palabras y colocarlas en un marco.
+
+nombre = input("Ingrese su nombre:\n")
+rpta = ""
+for i in range(0,5):
+    for j in range(0, len(nombre) + 4):
+        if i == 0 or i == 4:
+            rpta +="*"
+        elif i == 2:
+            rpta = "* "+nombre+" *"
+        else:
+            if j == 0 or j == len(nombre)+3:
+                rpta+="*"
+            else:
+                rpta+=" "
+    print(rpta)
+    rpta = ""
+
+
+# Ejercicio 6
+
+nombre = input("Ingrese su nombre:\n")
+distancia = int(input())
+rpta = ""
+espacio = (distancia*2)+3
+for i in range(0,espacio):
+    for j in range(0, espacio+len(nombre)-1):
+        if i == 0 or i == espacio-1:
+            rpta +="*"
+        elif i == int(espacio/2):
+            rpta += "*"
+            for k in range(3):
+              rpta += " "
+            rpta += nombre
+            for k in range(3):
+              rpta += " "
+            rpta += "*"
+            break
+        else:
+            if j == 0 or j == espacio+len(nombre)-2:
+                rpta+="*"
+            else:
+                rpta+=" "
+    print(rpta)
+    rpta = ""
