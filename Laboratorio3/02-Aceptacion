@@ -1,0 +1,135 @@
+# David Peña Ugarte
+# 20130875
+
+# Emparejamiento - Gale Shapley Algorithm - Aceptación diferida
+def completo_value(list_persons):
+    count = 0
+    for i in list_persons:
+        if i[1]:
+            count += 1
+    if count == len(list_persons):
+        return True
+    return False
+
+
+def marcar_otra_lista(list_persons, first_name, second_name):
+    for i in list_persons:
+        if i[2] == first_name and not i[1]:
+            for j in i[0]:
+                if j[0] == second_name:
+                    i[1] = True
+                    j[1] = True
+                    break
+
+
+def desmarcar(list_persons, first_person, second_person):
+    for i in list_persons:
+        if i[2] == first_person:
+            for j in i[0]:
+                if j[0] == second_person:
+                    i[1] = False
+                    j[1] = False
+                    break
+            break
+
+
+# Verificamos si tiene pareja
+def verificar_estado(list_persons, first_person, second_person):
+    for i in list_persons:
+        if i[2] == first_person and not i[1]:
+            for j in i[0]:
+                if j[0] == second_person:
+                    return True
+    return False
+
+
+def obtener_marcado(list_persons, first_person):
+    for i in list_persons:
+        if i[2] == first_person and i[1]:
+            for j in i[0]:
+                if j[1]:
+                    return j[0]
+
+
+def es_mejor(list_persons, first_person, second_person_a, second_person_b):
+    for i in list_persons:
+        if i[2] == first_person and i[1]:
+            for j in i[0]:
+                if j[0] == second_person_a:
+                    return True
+                if j[0] == second_person_b:
+                    return False
+    return False
+
+
+victor = [['bertha', False], ['amy', False], ['diane', False], ['erika', False], ['claire', False]]
+william = [['diane', False], ['bertha', False], ['amy', False], ['claire', False], ['erika', False]]
+xavier = [['bertha', False], ['erika', False], ['claire', False], ['diane', False], ['amy', False]]
+yancey = [['amy', False], ['diane', False], ['claire', False], ['bertha', False], ['erika', False]]
+zeus = [['bertha', False], ['diane', False], ['amy', False], ['erika', False], ['claire', False]]
+
+amy = [['william', False], ['victor', False], ['zeus', False], ['yancey', False], ['xavier', False]]
+bertha = [['xavier', False], ['william', False], ['yancey', False], ['victor', False], ['zeus', False]]
+claire = [['zeus', False], ['xavier', False], ['yancey', False], ['william', False], ['victor', False]]
+diane = [['victor', False], ['zeus', False], ['yancey', False], ['xavier', False], ['william', False]]
+erika = [['yancey', False], ['william', False], ['zeus', False], ['xavier', False], ['victor', False]]
+
+hombres = [[victor, False, 'victor'], [william, False, 'william'], [xavier, False, 'xavier'], [yancey, False, 'yancey'],
+           [zeus, False, 'zeus']]
+mujeres = [[amy, False, 'amy'], [bertha, False, 'bertha'], [claire, False, 'claire'], [diane, False, 'diane'],
+           [erika, False, 'erika']]
+
+completo = True
+cont = 0
+
+print("\nPreferencia Hombre\n")
+
+while not (completo_value(hombres) and completo_value(mujeres)):
+    for i in hombres:
+        if not i[1]:
+            for j in i[0]:
+                if verificar_estado(mujeres, j[0], i[2]):
+                    marcar_otra_lista(mujeres, j[0], i[2])
+                    j[1] = True
+                    i[1] = True
+                elif es_mejor(mujeres, j[0], i[2], obtener_marcado(mujeres, j[0])):
+                    desmarcar(hombres, obtener_marcado(mujeres, j[0]), j[0])
+                    desmarcar(mujeres, j[0], obtener_marcado(mujeres, j[0]))
+                    marcar_otra_lista(hombres, i[2], j[0])
+                    marcar_otra_lista(mujeres, j[0], i[2])
+                    break
+            break
+
+for i in hombres:
+    print(i)
+print("")
+for i in mujeres:
+    print(i)
+
+print("\nPreferencia Mujer\n")
+
+while not (completo_value(mujeres) and completo_value(hombres)):
+    for i in mujeres:
+        if not i[1]:
+            for j in i[0]:
+                if verificar_estado(hombres, j[0], i[2]):
+                    marcar_otra_lista(hombres, j[0], i[2])
+                    j[1] = True
+                    i[1] = True
+                    break
+                elif es_mejor(hombres, j[0], i[2], obtener_marcado(hombres, j[0])):
+                    desmarcar(mujeres, obtener_marcado(hombres, j[0]), j[0])
+                    desmarcar(hombres, j[0], obtener_marcado(hombres, j[0]))
+                    marcar_otra_lista(mujeres, i[2], j[0])
+                    marcar_otra_lista(hombres, j[0], i[2])
+                    break
+                else:
+                    print("Entro Ultimo caso")
+            break
+
+for i in mujeres:
+    print(i)
+print("")
+for i in hombres:
+    print(i)
+
