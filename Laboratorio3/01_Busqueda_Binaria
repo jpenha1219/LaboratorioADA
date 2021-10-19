@@ -1,3 +1,6 @@
+import time
+import matplotlib.pyplot as plt
+
 # David Peña Ugarte
 # 20130875
 
@@ -15,3 +18,41 @@ def busqueda_binaria(lista, x):
         else:
             izq = medio + 1
     return -1
+
+
+def llenar_lista(lista_par, lista_impar, tam):
+    for i in range(tam):
+        if i % 2 == 0:
+            lista_par.append(i)
+        else:
+            lista_impar.append(i)
+
+
+lista_par = []
+lista_impar = []
+llenar_lista(lista_par, lista_impar, 100)
+
+lista1 = [i for i in range(10) if i % 2 == 0]
+lista2 = [i for i in range(100) if i % 2 == 0]
+lista3 = [i for i in range(1000) if i % 2 == 0]
+lista4 = [i for i in range(10000) if i % 2 == 0]
+
+figura = []
+
+while lista_par != [[]]:
+    inicio = time.time()
+    x = int(input("¿Numero a buscar?: "))
+    resultado = busqueda_binaria(lista1, x)
+    fin = time.time()
+    x = int(input("¿Numero a buscar?: "))
+    resultado = busqueda_binaria(lista2, x)
+    x = int(input("¿Numero a buscar?: "))
+    fin = time.time()
+    resultado = busqueda_binaria(lista3, x)
+    x = int(input("¿Numero a buscar?: "))
+    fin = time.time()
+    resultado = busqueda_binaria(lista4, x)
+    print("Resultado:", resultado)
+    fin = time.time()
+
+    print(fin - inicio)
