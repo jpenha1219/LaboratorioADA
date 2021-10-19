@@ -1,0 +1,17 @@
+# David Peña Ugarte
+# 20130875
+
+def busqueda_binaria(lista, x):
+    # Funcion que hace la busqueda linea, se ingresa una lista con el numero a buscar.
+    izq = 0
+    der = len(lista) - 1
+
+    while izq <= der:
+        medio = int((izq + der) / 2)
+        if lista[medio] == x:
+            return medio
+        elif lista[medio] > x:
+            der = medio - 1
+        else:
+            izq = medio + 1
+    return -1
