@@ -4,7 +4,7 @@ import java.util.*;
 // 20130875
 //Ejercicio de el mas grande
 
-public class E001_Greatest_Number {
+public class Greatest_Number {
 	public static void main(String[] args) {
 		int n;
 		int count = 0;
