@@ -12,6 +12,7 @@ public class Question2 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingrese n:");
 		n = sc.nextInt();
+		numberListDesc(n);
 	}
 	
 	public static void numberListDesc(int n) {
