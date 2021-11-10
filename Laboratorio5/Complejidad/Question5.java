@@ -6,7 +6,7 @@
 
 import java.util.Scanner;
 
-public class Question4 {
+public class Question5 {
 	public static void main(String[] args) {
 		int n;
 		Scanner sc = new Scanner(System.in);
@@ -16,14 +16,12 @@ public class Question4 {
 	}
 
 	public static void twoNumbers(int n) {
-		//						      __					    ____
-		for (int i = 0; i < n; i++) {//				|= O(n)	  	      __			|
-			for (int j = 0; j < i; j++) {//						|= O(1)*0((n+1)/2)	|= O(n) * 0(n)
-			//statement								|= O(n/2)		|
-			System.out.println(i + " - " + j);	//= O(1)			|= O(n)			|= O(n²)
-			}//								      __|			|
-		}   //						      __|					    ____|Time complexity = O(n²)
-	}//												
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < i; j++) {
+			System.out.println(i + " - " + j);
+			}
+		}   
+	}												
       //|= O(n)	  	      			
       //|= O(1)*0((n+1)/2)	|= O(n) * 0(n)
       //|= O(n/2)		|
