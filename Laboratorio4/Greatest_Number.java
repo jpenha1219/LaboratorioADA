@@ -3,6 +3,7 @@ import java.util.*;
 // David Peña Ugarte
 // 20130875
 //Ejercicio de el mas grande
+// Complejidad O(n)
 
 public class Greatest_Number {
 	public static void main(String[] args) {
