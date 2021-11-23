@@ -3,7 +3,7 @@ import java.util.*;
 // David Peña Ugarte
 // 20130875
 // Ejercicio para Saber si dos numeros suman 10
-
+// Complejidad del algoritmo : O(n^2) 
 public class TwoSum {
 	public static void main(String[] args) {
 		int n;
