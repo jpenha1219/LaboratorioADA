@@ -3,6 +3,8 @@
 # Lista final de prioridad
 # CUI: 20130875
 
+import queue
+
 entrada =[[1,4,5],[1,3,4],[2,6]]
 salida=[]
 priorityQueue = queue.PriorityQueue()
