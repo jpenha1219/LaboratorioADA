@@ -1,19 +1,19 @@
 /*
  * Sqrt
  * Author: Peña Ugarte David Jose
- * Hay cuadrado
+ * Hay cuadrado en la lista?
  * CUI: 20130875
  */
-
+import java.util.*;
 import java.util.Scanner;
 
 public class Sqrt{
-        public static void main (String[]args){
+        public static void main (String[] args){
                 int [] lista = {2, 13, 16, 4, 9, 14, 19};
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Ingrese un numero");
                 int num = sc.nextInt();
-                System.out.println("¿Hay?: " + binarySearch(num));
+                System.out.println("¿Hay?: " + binarySearch(lista, num));
         }
 
         public static int binarySearch(int [] arr , int value){
@@ -25,7 +25,7 @@ public class Sqrt{
                                 return middle;
                         }
                         else{
-                                if(value < arr[middle]){
+                                if(value < arr[middle]*arr[middle]){
                                         high = middle - 1;
                                 } else {
                                         low = middle + 1;
