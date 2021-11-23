@@ -3,7 +3,7 @@ Import java.util.*;
 // David Peña Ugarte
 // 20130875
 // Identifica los indices pares y suma los valores del arreglo
-
+// Complejidad del algoritmo : O(n^2)
 
 public class EveryOther{
   public static void main (String[]args){
