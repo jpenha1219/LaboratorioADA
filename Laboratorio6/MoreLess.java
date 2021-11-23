@@ -6,28 +6,23 @@
  */
  
 public class MoreLess{
-        public static void main (String[]args){
-                int [] lista = {5,3,1,10,13,11,9};
-                System.out.println("¿Hay?: " + (binarySearch(lista)));
+       public static void main (String[]args){
+            int [] lista = {4,5,6,1,13,17,19};
+            System.out.println("Elemento mas pequeño: " + (binarySearch(lista)));
         }
 
         public static int binarySearch(int [] arr){
-                int low = 0;
-                int high = arr.length-1;
-                int middle = 0;
-                while(low <= high){
-                        System.out.println("entre a while");
-                        middle = ( low + high ) / 2;
-                        if(arr[low] < arr[middle]){
-                                low = middle + 1;
-                        }
-                        else{
-                                high = middle - 1;
-                        }
-                        if(low == high){
-                                return arr[middle];
-                        }
+            int low = 0;
+            int high = arr.length - 1;
+            int mid;
+            while (low < high) {
+                mid = low + ((high - low) / 2);
+                if (arr[mid] > arr[high]) {
+                    low = mid + 1;
+                } else {
+                    high = mid;
                 }
-                return arr[middle];
+            }
+            return arr[low];
         }
 }
