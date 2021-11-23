@@ -15,7 +15,7 @@ public class MayorIgual{
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Ingrese un Numero");
                 int num = sc.nextInt();
-                System.out.println("¿Hay?: " + (binarySearch(lista, num)));
+                System.out.println("¿Hay?: " + (binarySearch(arr, num)));
         }
 
         public static int binarySearch(int [] arr , int value){
