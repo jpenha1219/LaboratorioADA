@@ -1,5 +1,5 @@
 
-public class UniquePathsII {
+public class UniquePaths {
     public static void main(String[] args){
       int [][] obstacleGrid = {{0,0,0},{0,1,0},{0,0,0}};
       System.out.print(uniquePathsWithObstacles(obstacleGrid));
